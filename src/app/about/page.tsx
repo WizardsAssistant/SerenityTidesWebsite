@@ -1,6 +1,6 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { HeartHand, Leaf, Target } from "lucide-react";
+import { HandHeart, Leaf, Target } from "lucide-react";
 import Image from "next/image";
 
 const teamMembers = [
@@ -59,7 +59,7 @@ export default function AboutPage() {
         </div>
         <div className="flex flex-col items-center">
           <div className="p-4 bg-primary/20 rounded-full mb-4">
-            <HeartHand className="w-8 h-8 text-primary-foreground" />
+            <HandHeart className="w-8 h-8 text-primary-foreground" />
           </div>
           <h3 className="text-2xl font-headline font-semibold mb-2">Our Values</h3>
           <p className="text-muted-foreground">
