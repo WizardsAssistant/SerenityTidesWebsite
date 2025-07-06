@@ -1,6 +1,7 @@
 import { MindfulnessTipGenerator } from "@/components/mindfulness-tip-generator";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { UpcomingEventBanner } from "@/components/upcoming-event-banner";
 import { Waves } from "lucide-react";
 import Link from "next/link";
 
@@ -25,6 +26,10 @@ export default function Home() {
             <Link href="/about">About Us</Link>
           </Button>
         </div>
+      </section>
+
+      <section className="mb-16">
+        <UpcomingEventBanner />
       </section>
 
       <section>
