@@ -8,19 +8,31 @@ const teamMembers = [
     name: "Erik Beitel",
     role: "Founder & Lead Instructor",
     avatar: "https://placehold.co/100x100.png",
-    hint: "woman smiling",
+    hint: "man smiling",
   },
   {
-    name: "Maria Garcia",
+    name: "Julia Fetty",
     role: "Yoga & Movement Specialist",
     avatar: "https://placehold.co/100x100.png",
-    hint: "person yoga",
+    hint: "woman yoga",
   },
   {
-    name: "Sam Chen",
+    name: "Amanda LeVine",
     role: "Community Manager",
     avatar: "https://placehold.co/100x100.png",
-    hint: "man outdoors",
+    hint: "woman outdoors",
+  },
+  {
+    name: "Isabel Fudali",
+    role: "Mindfulness Coach",
+    avatar: "https://placehold.co/100x100.png",
+    hint: "woman teaching",
+  },
+  {
+    name: "Drew Schwartz",
+    role: "Creative Director",
+    avatar: "https://placehold.co/100x100.png",
+    hint: "man creative",
   },
 ];
 
