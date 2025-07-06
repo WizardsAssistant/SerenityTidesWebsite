@@ -5,7 +5,7 @@ import Image from "next/image";
 
 const teamMembers = [
   {
-    name: "Alex Johnson",
+    name: "Erik Beitel",
     role: "Founder & Lead Instructor",
     avatar: "https://placehold.co/100x100.png",
     hint: "woman smiling",
