@@ -32,11 +32,11 @@ function NotificationForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="w-full">
+    <form onSubmit={handleSubmit} className="w-full max-w-lg mx-auto">
       <Card>
         <CardHeader>
-          <CardTitle className="font-headline">Stay Updated</CardTitle>
-          <CardDescription>
+          <CardTitle className="font-headline text-center">Stay Updated</CardTitle>
+          <CardDescription className="text-center">
             Sign up for notifications about upcoming events and changes.
           </CardDescription>
         </CardHeader>
@@ -69,57 +69,51 @@ export default function EventsPage() {
         </p>
       </section>
 
-      <div className="grid lg:grid-cols-3 gap-8">
-        <div className="lg:col-span-2">
-          <div className="space-y-8">
-            {events.map((event) => (
-              <Card key={event.title} className="flex flex-col md:flex-row overflow-hidden shadow-md">
-                <div className="md:w-1/3">
-                  <Image
-                    src={event.image}
-                    alt={event.title}
-                    data-ai-hint={event.hint}
-                    width={600}
-                    height={400}
-                    className="object-cover w-full h-full"
-                  />
+      <div className="space-y-8">
+        {events.map((event) => (
+          <Card key={event.title} className="flex flex-col md:flex-row overflow-hidden shadow-md max-w-4xl mx-auto">
+            <div className="md:w-1/3">
+              <Image
+                src={event.image}
+                alt={event.title}
+                data-ai-hint={event.hint}
+                width={600}
+                height={400}
+                className="object-cover w-full h-full"
+              />
+            </div>
+            <div className="md:w-2/3 flex flex-col">
+              <CardHeader>
+                <CardTitle className="font-headline text-2xl">{event.title}</CardTitle>
+              </CardHeader>
+              <CardContent className="flex-grow">
+                <div className="space-y-2 text-sm text-muted-foreground">
+                  <div className="flex items-center gap-2">
+                    <Calendar className="w-4 h-4" />
+                    <span>{event.date}</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Clock className="w-4 h-4" />
+                    <span>{event.time}</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <MapPin className="w-4 h-4" />
+                    <span>{event.location}</span>
+                  </div>
                 </div>
-                <div className="md:w-2/3 flex flex-col">
-                  <CardHeader>
-                    <CardTitle className="font-headline text-2xl">{event.title}</CardTitle>
-                  </CardHeader>
-                  <CardContent className="flex-grow">
-                    <div className="space-y-2 text-sm text-muted-foreground">
-                      <div className="flex items-center gap-2">
-                        <Calendar className="w-4 h-4" />
-                        <span>{event.date}</span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <Clock className="w-4 h-4" />
-                        <span>{event.time}</span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <MapPin className="w-4 h-4" />
-                        <span>{event.location}</span>
-                      </div>
-                    </div>
-                    <p className="mt-4">{event.description}</p>
-                  </CardContent>
-                  <CardFooter>
-                    <Button>Register Now</Button>
-                  </CardFooter>
-                </div>
-              </Card>
-            ))}
-          </div>
-        </div>
-
-        <aside className="lg:col-span-1">
-          <div className="sticky top-24">
-            <NotificationForm />
-          </div>
-        </aside>
+                <p className="mt-4">{event.description}</p>
+              </CardContent>
+              <CardFooter>
+                <Button>Register Now</Button>
+              </CardFooter>
+            </div>
+          </Card>
+        ))}
       </div>
+
+      <section className="mt-16 pt-16 border-t">
+        <NotificationForm />
+      </section>
     </div>
   );
 }
