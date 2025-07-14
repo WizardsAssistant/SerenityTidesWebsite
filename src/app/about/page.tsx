@@ -62,7 +62,7 @@ export default function AboutPage() {
       <section className="grid md:grid-cols-3 gap-8 mb-16 text-center">
         <div className="flex flex-col items-center">
           <div className="p-4 bg-primary/20 rounded-full mb-4">
-            <Target className="w-8 h-8 text-primary-foreground" />
+            <Target className="w-8 h-8 text-primary" />
           </div>
           <h3 className="text-2xl font-headline font-semibold mb-2">Our Mission</h3>
           <p className="text-muted-foreground">
@@ -71,7 +71,7 @@ export default function AboutPage() {
         </div>
         <div className="flex flex-col items-center">
           <div className="p-4 bg-primary/20 rounded-full mb-4">
-            <HandHeart className="w-8 h-8 text-primary-foreground" />
+            <HandHeart className="w-8 h-8 text-primary" />
           </div>
           <h3 className="text-2xl font-headline font-semibold mb-2">Our Values</h3>
           <p className="text-muted-foreground">
@@ -80,7 +80,7 @@ export default function AboutPage() {
         </div>
         <div className="flex flex-col items-center">
           <div className="p-4 bg-primary/20 rounded-full mb-4">
-            <Leaf className="w-8 h-8 text-primary-foreground" />
+            <Leaf className="w-8 h-8 text-primary" />
           </div>
           <h3 className="text-2xl font-headline font-semibold mb-2">Our Approach</h3>
           <p className="text-muted-foreground">
