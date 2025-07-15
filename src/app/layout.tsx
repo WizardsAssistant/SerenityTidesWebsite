@@ -6,7 +6,7 @@ import { AppHeader } from '@/components/layout/header';
 import { AppFooter } from '@/components/layout/footer';
 
 export const metadata: Metadata = {
-  title: 'Serenity Navigator',
+  title: 'Serenity Tides',
   description:
     'Your guide to mindfulness, movement, and connection with Serenity Tides.',
 };

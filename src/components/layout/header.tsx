@@ -14,7 +14,7 @@ import {
 import { LogoIcon } from "../icons";
 
 const navLinks = [
-  { href: "/about", label: "About Me" },
+  { href: "/about", label: "About Us" },
   { href: "/events", label: "Events" },
   { href: "/live-location", label: "Live Location" },
 ];
@@ -29,7 +29,7 @@ export function AppHeader() {
           <Link href="/" className="mr-6 flex items-center space-x-2">
             <LogoIcon className="h-6 w-6" />
             <span className="hidden font-bold sm:inline-block font-headline">
-              Serenity Navigator
+              Serenity Tides
             </span>
           </Link>
           <nav className="flex items-center space-x-6 text-sm font-medium">
@@ -62,7 +62,7 @@ export function AppHeader() {
               onClick={() => setOpen(false)}
             >
               <LogoIcon className="mr-2 h-6 w-6" />
-              <span className="font-bold font-headline">Serenity Navigator</span>
+              <span className="font-bold font-headline">Serenity Tides</span>
             </Link>
             <div className="my-4 h-[calc(100vh-8rem)] pb-10 pl-6">
               <div className="flex flex-col space-y-3">
@@ -83,7 +83,7 @@ export function AppHeader() {
 
         <Link href="/" className="flex items-center space-x-2 md:hidden">
           <LogoIcon className="h-6 w-6" />
-          <span className="font-bold font-headline">Serenity Navigator</span>
+          <span className="font-bold font-headline">Serenity Tides</span>
         </Link>
       </div>
     </header>
