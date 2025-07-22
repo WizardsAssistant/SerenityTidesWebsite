@@ -1,13 +1,18 @@
 import type {NextConfig} from 'next';
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  // Build configuration
+  output: 'standalone',
+  
+  // Development configuration
   typescript: {
     ignoreBuildErrors: true,
   },
   eslint: {
     ignoreDuringBuilds: true,
   },
+  
+  // Image optimization configuration
   images: {
     remotePatterns: [
       {

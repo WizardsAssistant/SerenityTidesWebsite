@@ -1,270 +1,190 @@
-# Serenity Tides Website
+# 🌊 Serenity Tides Website
 
-A modern, responsive website for Serenity Tides spiritual wellness retreats, built with Next.js and integrated with Contentful CMS for easy content management.
+A beautiful, responsive website for Serenity Tides Spiritual Wellness Retreat, built with Next.js and powered by modern web technologies.
 
-## 🌊 Features
+## ✨ Features
 
-- **Modern Design**: Clean, responsive design optimized for all devices
-- **Content Management**: Integrated with Contentful CMS for non-technical content editing
-- **Event Management**: Dynamic event listings with detailed information
-- **Team Profiles**: Showcase team members with photos and bios
-- **Fallback System**: Works without CMS credentials during development
-- **Performance Optimized**: Built with Next.js for fast loading and SEO
+- 🎨 **Modern Design**: Clean, serene interface with Tailwind CSS
+- 📱 **Responsive**: Mobile-first design that works on all devices
+- ⚡ **Fast Performance**: Optimized with Next.js and CDN delivery
+- 🧘 **AI-Powered**: Personalized mindfulness tips via Google Genkit
+- 📝 **Content Management**: Dynamic content via Contentful CMS
+- 🛡️ **Reliable**: Comprehensive fallback system ensures uptime
+- 🧪 **Well-Tested**: Automated testing with Jest and React Testing Library
 
-## 🚀 Live Website
-
-**Current Live URL**: https://9002-i240rghd9yasjdetmsmxr-c139f381.manusvm.computer
-
-## 🛠 Technology Stack
-
-- **Framework**: Next.js 15.3.3 with TypeScript
-- **Styling**: Tailwind CSS with shadcn/ui components
-- **CMS**: Contentful (with fallback data system)
-- **Deployment**: Vercel (recommended)
-- **Icons**: Lucide React
-
-## 📋 Content Structure
-
-The website includes:
-
-### Pages
-- **Homepage**: Hero section with upcoming event banner
-- **About**: Mission, values, approach, and team profiles
-- **Events**: Complete list of 2025 Summer Series events
-- **Live Location**: Interactive location information
-
-### CMS Content Types
-- **Events**: Title, date, time, location, description, images
-- **Team Members**: Name, role, bio, avatar, display order
-- **Page Content**: Editable page content and headlines
-- **Global Settings**: Site-wide settings and contact information
-
-## 🔧 Setup Instructions
+## 🚀 Quick Start
 
 ### Prerequisites
-- Node.js 18+ 
-- npm or yarn
-- Git
+- Node.js 20.x or later
+- npm package manager
 
-### Local Development
-
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/ErikTheWizard/SerenityTidesWebsite.git
-   cd SerenityTidesWebsite
-   git checkout master  # Important: Use master branch, not main
-   ```
-
-2. **Install dependencies**
-   ```bash
-   npm install
-   ```
-
-3. **Environment Configuration**
-   
-   The website works with fallback data by default. To enable CMS functionality:
-   
-   - Copy `.env.local` and update with your Contentful credentials:
-   ```env
-   CONTENTFUL_SPACE_ID=your_actual_space_id
-   CONTENTFUL_ACCESS_TOKEN=your_actual_access_token
-   CONTENTFUL_PREVIEW_ACCESS_TOKEN=your_actual_preview_token
-   CONTENTFUL_ENVIRONMENT=master
-   ```
-
-4. **Start development server**
-   ```bash
-   npm run dev
-   ```
-   
-   Visit `http://localhost:9002`
-
-### Production Build
-
+### Installation
 ```bash
-npm run build
-npm start
+# Clone the repository
+git clone https://github.com/WizardsAssistant/SerenityTidesWebsite.git
+cd SerenityTidesWebsite
+
+# Install dependencies
+npm install
+
+# Set up environment variables
+cp .env.example .env.local
+# Edit .env.local with your Contentful credentials
+
+# Start development server
+npm run dev
 ```
 
-## 📝 Contentful CMS Setup
+Visit [http://localhost:9002](http://localhost:9002) to see the website.
 
-### Quick Setup Guide
+## 🛠️ Tech Stack
 
-1. **Create Contentful Account**
-   - Sign up at [contentful.com](https://www.contentful.com)
-   - Create a new space called "Serenity Tides"
+- **Framework**: [Next.js 15.3.3](https://nextjs.org/) with App Router
+- **Language**: [TypeScript 5.7.3](https://www.typescriptlang.org/)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/) + [Radix UI](https://www.radix-ui.com/)
+- **Content**: [Contentful CMS](https://www.contentful.com/)
+- **AI**: [Google Genkit](https://firebase.google.com/docs/genkit)
+- **Testing**: [Jest](https://jestjs.io/) + [React Testing Library](https://testing-library.com/)
+- **Deployment**: [Netlify](https://www.netlify.com/)
 
-2. **Get API Keys**
-   - Go to Settings > API keys
-   - Create new API key named "Serenity Tides Website"
-   - Copy Space ID and access tokens
+## 📁 Project Structure
 
-3. **Create Content Models**
+```
+src/
+├── app/                    # Next.js App Router pages
+│   ├── about/             # About page
+│   ├── events/            # Events listing
+│   ├── live-location/     # Live location page
+│   └── layout.tsx         # Root layout
+├── components/            # Reusable UI components
+│   ├── ui/               # Base components (Radix UI)
+│   └── layout/           # Layout components
+├── lib/                  # Utilities and configurations
+├── hooks/                # Custom React hooks
+└── ai/                   # AI integration (Genkit)
+```
 
-   **Event Content Model** (`event`):
-   - Title (Short text, required)
-   - Date (Date & time, required)
-   - Time (Short text, required) - e.g., "8:00 AM - 10:00 AM"
-   - Location (Short text, required)
-   - Description (Long text, required)
-   - Image (Media, required)
-   - Slug (Short text, required)
+## 🧪 Testing
 
-   **Team Member Content Model** (`teamMember`):
-   - Name (Short text, required)
-   - Role (Short text, required)
-   - Bio (Long text, optional)
-   - Avatar (Media, required)
-   - Order (Integer, required) - for display ordering
+```bash
+# Run all tests
+npm run test
 
-   **Page Content Model** (`pageContent`):
-   - Title (Short text, required)
-   - Content (Rich text, required)
-   - Slug (Short text, required) - e.g., "homepage", "about"
+# Run tests in watch mode
+npm run test:watch
 
-   **Global Settings Model** (`globalSettings`):
-   - Site Name (Short text, required)
-   - Site Description (Long text, required)
-   - Contact Email (Short text, required)
-   - Contact Phone (Short text, optional)
-   - Address (Long text, optional)
-   - Social Media (JSON object, optional)
+# Run tests with coverage
+npm run test:coverage
 
-### Sample Content
+# Run CI tests
+npm run test:ci
+```
 
-The repository includes detailed sample content in the Contentful setup guide. Key events include:
+Current test coverage: **11 tests passing** covering infrastructure and CMS integration.
 
-- **2025 Summer Series - Week 1**: Mindful Mornings (June 14, Lincoln Park)
-- **2025 Summer Series - Week 2**: Sunset Serenity (June 21, Millennium Park)
-- **2025 Summer Series - Week 3**: Community Connection (June 28, Grant Park)
-- **2025 Summer Series - Week 4**: Nature's Embrace (July 5, North Avenue Beach)
+## 🌐 Deployment
 
-## 👥 Team Management
+The website is automatically deployed to Netlify on every push to the master branch.
 
-Team members are displayed in order based on the `order` field:
+- **Live Site**: https://serenity-tides-website-v2.netlify.app
+- **Build Command**: `npm run test:ci && npm run build`
+- **Deploy Branch**: `master`
 
-1. Erik Beitel - Founder & Lead Instructor
-2. Julia Fetty - Yoga & Movement Specialist
-3. Amanda LeVine - Community Manager
-4. Isabel Fudali - Mindfulness Coach
-5. Drew Schwartz - Creative Director
+## 📚 Documentation
 
-## 🎨 Design System
+Comprehensive documentation is available in the `docs/` directory:
 
-### Colors
-- Primary: Teal/Turquoise theme
-- Background: Clean whites and light grays
-- Accent: Purple highlights for CTAs
+- [📖 Project Overview](docs/PROJECT_OVERVIEW.md) - Complete project guide
+- [🛠️ Development Guide](docs/DEVELOPMENT.md) - Coding standards and workflows
+- [🔧 Environment Setup](docs/ENVIRONMENT.md) - Configuration and environment variables
+- [🧪 Testing Guide](docs/TESTING.md) - Testing strategy and best practices
 
-### Typography
-- Headlines: Custom font stack optimized for readability
-- Body: Clean, modern sans-serif
-- Responsive sizing for all screen sizes
+## 🎯 Available Scripts
 
-### Components
-- Responsive navigation header
-- Event cards with image, details, and CTAs
-- Team member profile cards
-- Newsletter signup forms
-- Footer with social links
+```bash
+npm run dev          # Start development server (port 9002)
+npm run build        # Build for production
+npm run start        # Start production server
+npm run test         # Run test suite
+npm run test:watch   # Run tests in watch mode
+npm run test:ci      # Run tests for CI/CD
+npm run typecheck    # Check TypeScript types
+npm run lint         # Run ESLint
+```
 
-## 📱 Responsive Design
+## 🔧 Environment Variables
 
-The website is fully responsive and optimized for:
-- Desktop (1200px+)
-- Tablet (768px - 1199px)
-- Mobile (320px - 767px)
+Required environment variables for Contentful CMS:
 
-## 🔄 Content Updates
+```bash
+CONTENTFUL_SPACE_ID=your_space_id
+CONTENTFUL_ACCESS_TOKEN=your_access_token
+CONTENTFUL_ENVIRONMENT=master
+```
 
-### For Non-Technical Users
+See [Environment Setup Guide](docs/ENVIRONMENT.md) for detailed configuration.
 
-1. **Log into Contentful**
-   - Visit your Contentful space
-   - Go to the "Content" tab
+## 🤝 Contributing
 
-2. **Edit Events**
-   - Click on any event entry
-   - Update title, date, time, location, or description
-   - Upload new images if needed
-   - Click "Publish" to make changes live
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Follow our [Development Guidelines](docs/DEVELOPMENT.md)
+4. Run tests (`npm run test`)
+5. Commit changes (`git commit -m 'Add amazing feature'`)
+6. Push to branch (`git push origin feature/amazing-feature`)
+7. Open a Pull Request
 
-3. **Update Team Information**
-   - Edit team member entries
-   - Update bios, roles, or profile photos
-   - Changes appear automatically on the website
+## 📊 Project Status
 
-4. **Modify Page Content**
-   - Edit homepage or about page content
-   - Use rich text editor for formatting
-   - Publish changes to update the website
+### ✅ Phase 1 Complete - Live and Operational
+- [x] Modern Next.js website with TypeScript
+- [x] Responsive design with Tailwind CSS
+- [x] Contentful CMS integration with fallback system
+- [x] AI-powered mindfulness features
+- [x] Comprehensive testing infrastructure
+- [x] Automated deployment pipeline
+- [x] Complete documentation
 
-### For Developers
+### 🔄 Future Enhancements
+- [ ] Enhanced component test coverage
+- [ ] End-to-end testing with Playwright
+- [ ] Performance monitoring and analytics
+- [ ] Advanced CMS features and workflows
+- [ ] Multi-language support
 
-- All content fetching includes fallback data
-- CMS integration is in `/src/lib/contentful.ts`
-- Fallback data is in `/src/lib/contentful-fallback.ts`
-- TypeScript types ensure type safety
+## 🌟 Key Features
 
-## 🚀 Deployment
+### Content Management
+- **Dynamic Events**: Manage retreat events through Contentful
+- **Team Profiles**: Showcase instructors and organizers
+- **Fallback System**: Local content ensures site reliability
+- **Rich Content**: Support for rich text and media
 
-### Recommended: Vercel
+### User Experience
+- **Mobile-First**: Optimized for all screen sizes
+- **Fast Loading**: Optimized images and code splitting
+- **Accessible**: Built with accessibility best practices
+- **SEO-Friendly**: Proper meta tags and structured data
 
-1. **Connect Repository**
-   - Import project from GitHub
-   - Select the `master` branch
-
-2. **Environment Variables**
-   - Add Contentful credentials in Vercel dashboard
-   - Use the same variable names as in `.env.local`
-
-3. **Deploy**
-   - Automatic deployments on push to master
-   - Preview deployments for pull requests
-
-### Alternative: Other Platforms
-
-The website can be deployed to any platform supporting Next.js:
-- Netlify
-- AWS Amplify
-- Railway
-- DigitalOcean App Platform
-
-## 🔧 Development Notes
-
-### Key Files
-- `/src/app/page.tsx` - Homepage
-- `/src/app/about/page.tsx` - About page
-- `/src/app/events/page.tsx` - Events page
-- `/src/lib/contentful.ts` - CMS integration
-- `/src/components/upcoming-event-banner.tsx` - Homepage event banner
-
-### Image Configuration
-External images are configured in `next.config.ts` for:
-- Unsplash (fallback images)
-- Contentful CDN (images.ctfassets.net)
-
-### Build Process
-- TypeScript compilation with error tolerance
-- Static page generation for optimal performance
-- Image optimization for web delivery
+### Developer Experience
+- **TypeScript**: Full type safety and IntelliSense
+- **Modern Tooling**: Latest Next.js with App Router
+- **Testing**: Comprehensive test suite with CI/CD
+- **Documentation**: Detailed guides and examples
 
 ## 📞 Support
 
-For technical support or questions about the CMS integration:
-
-1. Check the Contentful setup guide in the repository
-2. Review the fallback data structure for content examples
-3. Ensure all environment variables are correctly configured
-4. Verify content model field names match the TypeScript interfaces
+- 📧 **Issues**: [GitHub Issues](https://github.com/WizardsAssistant/SerenityTidesWebsite/issues)
+- 📖 **Documentation**: See `docs/` directory
+- 🔧 **Development**: Follow [Development Guide](docs/DEVELOPMENT.md)
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+This project is private and proprietary to Serenity Tides Spiritual Wellness Retreat.
 
 ---
 
-**Built with ❤️ for Serenity Tides**
+**Built with 💙 for the Serenity Tides community**
 
-*Bringing mindfulness, movement, and connection to the Chicago community.*
+*Find your flow with mindfulness, movement, and connection* 🌊
 
