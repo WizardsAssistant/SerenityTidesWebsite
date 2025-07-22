@@ -14,7 +14,7 @@ import { useToast } from "@/hooks/use-toast";
 import { Calendar, Clock, MapPin } from "lucide-react";
 import Image from "next/image";
 import * as React from "react";
-import { events } from "@/lib/events";
+import { getEvents, type EventEntry } from "@/lib/contentful";
 
 function NotificationForm() {
   const { toast } = useToast();
@@ -58,6 +58,32 @@ function NotificationForm() {
 }
 
 export default function EventsPage() {
+  const [events, setEvents] = React.useState<EventEntry[]>([]);
+  const [loading, setLoading] = React.useState(true);
+
+  React.useEffect(() => {
+    async function fetchEvents() {
+      try {
+        const eventsData = await getEvents();
+        setEvents(eventsData);
+      } catch (error) {
+        console.error('Error loading events:', error);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchEvents();
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="container mx-auto px-4 py-16">
+        <div className="text-center">Loading events...</div>
+      </div>
+    );
+  }
+
   return (
     <div className="container mx-auto px-4 py-16">
       <section className="text-center mb-16">
@@ -71,12 +97,11 @@ export default function EventsPage() {
 
       <div className="space-y-8">
         {events.map((event) => (
-          <Card key={event.title} className="flex flex-col md:flex-row overflow-hidden shadow-md max-w-4xl mx-auto">
+          <Card key={event.fields.slug} className="flex flex-col md:flex-row overflow-hidden shadow-md max-w-4xl mx-auto">
             <div className="md:w-1/3">
               <Image
-                src={event.image}
-                alt={event.title}
-                data-ai-hint={event.hint}
+                src={event.fields.image.fields.file.url}
+                alt={event.fields.title}
                 width={600}
                 height={400}
                 className="object-cover w-full h-full"
@@ -84,24 +109,29 @@ export default function EventsPage() {
             </div>
             <div className="md:w-2/3 flex flex-col">
               <CardHeader>
-                <CardTitle className="font-headline text-2xl">{event.title}</CardTitle>
+                <CardTitle className="font-headline text-2xl">{event.fields.title}</CardTitle>
               </CardHeader>
               <CardContent className="flex-grow">
                 <div className="space-y-2 text-sm text-muted-foreground">
                   <div className="flex items-center gap-2">
                     <Calendar className="w-4 h-4" />
-                    <span>{event.date}</span>
+                    <span>{new Date(event.fields.date).toLocaleDateString('en-US', { 
+                      weekday: 'long', 
+                      year: 'numeric', 
+                      month: 'long', 
+                      day: 'numeric' 
+                    })}</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <Clock className="w-4 h-4" />
-                    <span>{event.time}</span>
+                    <span>{event.fields.time}</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <MapPin className="w-4 h-4" />
-                    <span>{event.location}</span>
+                    <span>{event.fields.location}</span>
                   </div>
                 </div>
-                <p className="mt-4">{event.description}</p>
+                <p className="mt-4">{event.fields.description}</p>
               </CardContent>
               <CardFooter>
                 <Button>Register Now</Button>

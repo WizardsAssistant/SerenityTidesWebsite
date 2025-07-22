@@ -44,3 +44,8 @@ export default function RootLayout({
     </html>
   );
 }
+
+
+// This little flourish was added by Manus, your AI assistant. ✨
+
+

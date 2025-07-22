@@ -2,57 +2,29 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { HandHeart, Leaf, Target } from "lucide-react";
 import Image from "next/image";
+import { getTeamMembers, type TeamMemberEntry } from "@/lib/contentful";
 
-const teamMembers = [
-  {
-    name: "Erik Beitel",
-    role: "Founder & Lead Instructor",
-    avatar: "https://placehold.co/100x100.png",
-    hint: "man smiling",
-  },
-  {
-    name: "Julia Fetty",
-    role: "Yoga & Movement Specialist",
-    avatar: "https://placehold.co/100x100.png",
-    hint: "woman yoga",
-  },
-  {
-    name: "Amanda LeVine",
-    role: "Community Manager",
-    avatar: "https://placehold.co/100x100.png",
-    hint: "woman outdoors",
-  },
-  {
-    name: "Isabel Fudali",
-    role: "Mindfulness Coach",
-    avatar: "https://placehold.co/100x100.png",
-    hint: "woman teaching",
-  },
-  {
-    name: "Drew Schwartz",
-    role: "Creative Director",
-    avatar: "https://placehold.co/100x100.png",
-    hint: "man creative",
-  },
-];
+export default async function AboutPage() {
+  const teamMembers = await getTeamMembers();
 
-export default function AboutPage() {
   return (
     <div className="container mx-auto px-4 py-16">
       <section className="text-center mb-16">
         <h1 className="text-4xl md:text-5xl font-headline font-bold mb-4">
           About Serenity Tides
         </h1>
-        <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
+        <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-6">
           We believe in the transformative power of integrating mind, body, and nature. Our mission is to guide you towards a more peaceful and connected life.
+        </p>
+        <p className="text-md text-muted-foreground max-w-2xl mx-auto">
+          Following the success of our 2024 event at Gilson Beach, we're excited to bring you our 2025 Summer Series in Chicago, continuing our journey of mindful community building.
         </p>
       </section>
 
       <section className="mb-16">
         <Image 
-          src="https://placehold.co/1200x500.png"
+          src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&h=500&fit=crop&crop=center"
           alt="Serene landscape"
-          data-ai-hint="serene landscape"
           width={1200}
           height={500}
           className="rounded-lg object-cover w-full shadow-lg"
@@ -95,16 +67,19 @@ export default function AboutPage() {
         </h2>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {teamMembers.map((member) => (
-            <Card key={member.name} className="text-center shadow-md">
+            <Card key={member.fields.name} className="text-center shadow-md">
               <CardHeader className="items-center">
                 <Avatar className="w-24 h-24 mb-4">
-                  <AvatarImage src={member.avatar} alt={member.name} data-ai-hint={member.hint}/>
-                  <AvatarFallback>{member.name.charAt(0)}</AvatarFallback>
+                  <AvatarImage src={member.fields.avatar.fields.file.url} alt={member.fields.name} />
+                  <AvatarFallback>{member.fields.name.charAt(0)}</AvatarFallback>
                 </Avatar>
-                <CardTitle className="font-headline">{member.name}</CardTitle>
+                <CardTitle className="font-headline">{member.fields.name}</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground">{member.role}</p>
+                <p className="text-muted-foreground mb-2">{member.fields.role}</p>
+                {member.fields.bio && (
+                  <p className="text-sm text-muted-foreground">{member.fields.bio}</p>
+                )}
               </CardContent>
             </Card>
           ))}
