@@ -181,3 +181,29 @@ export const fallbackGlobalSettings = {
   }
 };
 
+export const fallbackHomepageContent = {
+  fields: {
+    heroHeadline: "Find Your Flow with Serenity Tides",
+    heroSubheading: "Discover inner peace and mindful living through our transformative meditation retreats, wellness workshops, and spiritual guidance. Join our community of seekers on a journey toward deeper awareness and lasting serenity.",
+    heroBackgroundImage: {
+      fields: {
+        file: {
+          url: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&h=500&fit=crop&crop=center",
+          details: {
+            image: {
+              width: 1200,
+              height: 500
+            }
+          }
+        },
+        title: "Serenity Tides Hero Background",
+        description: "Peaceful ocean waves representing tranquility and mindfulness"
+      }
+    },
+    primaryButtonText: "Explore Events",
+    primaryButtonLink: "/events",
+    secondaryButtonText: "About Us",
+    heroSecondaryButtonLink: "/about"
+  }
+};
+
