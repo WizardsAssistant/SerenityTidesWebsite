@@ -42,6 +42,32 @@ export interface EventEntry {
   };
 }
 
+export interface HomepageContentEntry {
+  fields: {
+    heroHeadline: string;
+    heroSubheading: string;
+    heroBackgroundImage?: {
+      fields: {
+        file: {
+          url: string;
+          details: {
+            image: {
+              width: number;
+              height: number;
+            };
+          };
+        };
+        title: string;
+        description: string;
+      };
+    };
+    primaryButtonText: string;
+    primaryButtonLink: string;
+    secondaryButtonText?: string;
+    heroSecondaryButtonLink?: string;
+  };
+}
+
 export interface TeamMemberEntry {
   fields: {
     name: string;
@@ -134,6 +160,26 @@ export async function getPageContent(slug: string): Promise<PageContentEntry | n
   } catch (error) {
     console.error('Error fetching page content from Contentful, using fallback:', error);
     return (fallbackPageContent as any)[slug] || null;
+  }
+}
+
+export async function getHomepageContent(): Promise<HomepageContentEntry | null> {
+  if (!hasContentfulCredentials) {
+    console.log('Using fallback homepage content - configure Contentful credentials for CMS functionality');
+    const { fallbackHomepageContent } = await import('./contentful-fallback');
+    return fallbackHomepageContent;
+  }
+
+  try {
+    const response = await client.getEntries({
+      content_type: 'homepageContent',
+      limit: 1,
+    });
+    return response.items[0] as HomepageContentEntry || null;
+  } catch (error) {
+    console.error('Error fetching homepage content from Contentful, using fallback:', error);
+    const { fallbackHomepageContent } = await import('./contentful-fallback');
+    return fallbackHomepageContent;
   }
 }
 
