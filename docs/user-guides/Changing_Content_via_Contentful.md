@@ -29,7 +29,7 @@ Once logged in, you will be in your Contentful "Space." From here, you need to f
 
     ![Contentful Content Tab](images/02-content-list.png)
 
-2.  You will see a list of all content entries. For this example, we'll edit the homepage content by clicking on **Find Your Flow with Serenity Tides**.
+2.  You will see a list of all content entries. For this example, we'll edit the homepage content by clicking on **Homepage Content**.
 
     *Tip: If you have many content entries, you can use the search bar at the top to filter by name or use the sidebar filters to narrow by content type.*
 
