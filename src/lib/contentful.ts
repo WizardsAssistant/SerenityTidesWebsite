@@ -42,6 +42,16 @@ export interface EventEntry {
   };
 }
 
+export interface AboutPageContentEntry {
+  fields: {
+    About_Us_Text: string;
+    About_Us_Secondary_Text: string;
+    Our_Mission_Text: string;
+    Our_Values_Text: string;
+    Our_Approach_Text: string;
+  };
+}
+
 export interface HomepageContentEntry {
   fields: {
     heroHeadline: string;
@@ -147,6 +157,30 @@ export async function getHomepageContent(): Promise<HomepageContentEntry | null>
     console.error('Contentful API Error:', error);
     const { fallbackHomepageContent } = await import('./contentful-fallback');
     return fallbackHomepageContent;
+  }
+}
+
+export async function getAboutPageContent(): Promise<AboutPageContentEntry | null> {
+  if (!hasContentfulCredentials) {
+    const { fallbackAboutPageContent } = await import('./contentful-fallback');
+    return fallbackAboutPageContent;
+  }
+
+  try {
+    const response = await client.getEntries({
+      content_type: 'aboutPageContent',
+      limit: 1,
+    });
+    
+    if (response.items.length > 0) {
+      return response.items[0] as AboutPageContentEntry;
+    } else {
+      return null;
+    }
+  } catch (error) {
+    console.error('Contentful API Error:', error);
+    const { fallbackAboutPageContent } = await import('./contentful-fallback');
+    return fallbackAboutPageContent;
   }
 }
 
