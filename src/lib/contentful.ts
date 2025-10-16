@@ -164,45 +164,24 @@ export async function getPageContent(slug: string): Promise<PageContentEntry | n
 }
 
 export async function getHomepageContent(): Promise<HomepageContentEntry | null> {
-  // 🔍 DIAGNOSTIC LOGGING - Remove after fixing
-  console.log('🔍 CONTENTFUL DEBUG - Environment Variables:');
-  console.log('CONTENTFUL_SPACE_ID:', process.env.CONTENTFUL_SPACE_ID ? '✅ Present' : '❌ Missing');
-  console.log('CONTENTFUL_ACCESS_TOKEN:', process.env.CONTENTFUL_ACCESS_TOKEN ? '✅ Present' : '❌ Missing');
-  console.log('CONTENTFUL_ENVIRONMENT:', process.env.CONTENTFUL_ENVIRONMENT || 'master');
-  console.log('hasContentfulCredentials:', hasContentfulCredentials);
-  
   if (!hasContentfulCredentials) {
-    console.log('🚨 Using fallback homepage content - Contentful credentials not available');
     const { fallbackHomepageContent } = await import('./contentful-fallback');
     return fallbackHomepageContent;
   }
 
-  console.log('🚀 Attempting Contentful API call...');
-  
   try {
     const response = await client.getEntries({
       content_type: 'homepageContent',
       limit: 1,
     });
     
-    console.log('✅ Contentful API Success!');
-    console.log('Response items count:', response.items.length);
-    
     if (response.items.length > 0) {
-      console.log('✅ Homepage content found!');
-      console.log('Hero image present:', !!response.items[0].fields.heroBackgroundImage);
       return response.items[0] as HomepageContentEntry;
     } else {
-      console.log('⚠️ No homepage content entries found');
       return null;
     }
   } catch (error) {
-    console.error('🚨 Contentful API Error:', error);
-    console.error('Error details:', {
-      message: error.message,
-      name: error.name,
-      stack: error.stack
-    });
+    console.error('Contentful API Error:', error);
     const { fallbackHomepageContent } = await import('./contentful-fallback');
     return fallbackHomepageContent;
   }
