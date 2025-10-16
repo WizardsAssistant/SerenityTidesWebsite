@@ -165,7 +165,6 @@ export async function getPageContent(slug: string): Promise<PageContentEntry | n
 
 export async function getHomepageContent(): Promise<HomepageContentEntry | null> {
   if (!hasContentfulCredentials) {
-    console.log('Using fallback homepage content - configure Contentful credentials for CMS functionality');
     const { fallbackHomepageContent } = await import('./contentful-fallback');
     return fallbackHomepageContent;
   }
@@ -175,9 +174,14 @@ export async function getHomepageContent(): Promise<HomepageContentEntry | null>
       content_type: 'homepageContent',
       limit: 1,
     });
-    return response.items[0] as HomepageContentEntry || null;
+    
+    if (response.items.length > 0) {
+      return response.items[0] as HomepageContentEntry;
+    } else {
+      return null;
+    }
   } catch (error) {
-    console.error('Error fetching homepage content from Contentful, using fallback:', error);
+    console.error('Contentful API Error:', error);
     const { fallbackHomepageContent } = await import('./contentful-fallback');
     return fallbackHomepageContent;
   }

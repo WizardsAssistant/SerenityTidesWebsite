@@ -29,7 +29,7 @@ export default async function Home() {
               src={heroImage.fields.file.url.startsWith('//') ? `https:${heroImage.fields.file.url}` : heroImage.fields.file.url}
               alt={heroImage.fields.description || "Hero background"}
               fill
-              className="object-cover opacity-20"
+              className="object-cover opacity-60"
               priority
             />
             <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/60 to-background/80" />
