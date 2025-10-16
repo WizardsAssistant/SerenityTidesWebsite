@@ -2,10 +2,11 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { HandHeart, Leaf, Target } from "lucide-react";
 import Image from "next/image";
-import { getTeamMembers, type TeamMemberEntry } from "@/lib/contentful";
+import { getTeamMembers, getAboutPageContent, type TeamMemberEntry } from "@/lib/contentful";
 
 export default async function AboutPage() {
   const teamMembers = await getTeamMembers();
+  const aboutContent = await getAboutPageContent();
 
   return (
     <div className="container mx-auto px-4 py-16">
@@ -14,10 +15,10 @@ export default async function AboutPage() {
           About Serenity Tides
         </h1>
         <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-6">
-          We believe in the transformative power of integrating mind, body, and nature. Our mission is to guide you towards a more peaceful and connected life.
+          {aboutContent?.fields.About_Us_Text || "We believe in the transformative power of integrating mind, body, and nature. Our mission is to guide you towards a more peaceful and connected life."}
         </p>
         <p className="text-md text-muted-foreground max-w-2xl mx-auto">
-          Following the success of our 2024 event at Gilson Beach, we're excited to bring you our 2025 Summer Series in Chicago, continuing our journey of mindful community building.
+          {aboutContent?.fields.About_Us_Secondary_Text || "Following the success of our 2024 event at Gilson Beach, we're excited to bring you our 2025 Summer Series in Chicago, continuing our journey of mindful community building."}
         </p>
       </section>
 
@@ -38,7 +39,7 @@ export default async function AboutPage() {
           </div>
           <h3 className="text-2xl font-headline font-semibold mb-2">Our Mission</h3>
           <p className="text-muted-foreground">
-            To provide accessible, high-quality mindfulness and movement experiences that foster inner peace and community connection.
+            {aboutContent?.fields.Our_Mission_Text || "To provide accessible, high-quality mindfulness and movement experiences that foster inner peace and community connection."}
           </p>
         </div>
         <div className="flex flex-col items-center">
@@ -47,7 +48,7 @@ export default async function AboutPage() {
           </div>
           <h3 className="text-2xl font-headline font-semibold mb-2">Our Values</h3>
           <p className="text-muted-foreground">
-            We value authenticity, compassion, inclusivity, and a deep respect for the natural world in all that we do.
+            {aboutContent?.fields.Our_Values_Text || "We value authenticity, compassion, inclusivity, and a deep respect for the natural world in all that we do."}
           </p>
         </div>
         <div className="flex flex-col items-center">
@@ -56,7 +57,7 @@ export default async function AboutPage() {
           </div>
           <h3 className="text-2xl font-headline font-semibold mb-2">Our Approach</h3>
           <p className="text-muted-foreground">
-            We blend ancient wisdom with modern science, creating unique events that are both grounding and uplifting.
+            {aboutContent?.fields.Our_Approach_Text || "We blend ancient wisdom with modern science, creating unique events that are both grounding and uplifting."}
           </p>
         </div>
       </section>

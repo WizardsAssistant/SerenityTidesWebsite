@@ -181,6 +181,16 @@ export const fallbackGlobalSettings = {
   }
 };
 
+export const fallbackAboutPageContent = {
+  fields: {
+    About_Us_Text: "We believe in the transformative power of integrating mind, body, and nature. Our mission is to guide you towards a more peaceful and connected life.",
+    About_Us_Secondary_Text: "Following the success of our 2024 event at Gilson Beach, we're excited to bring you our 2025 Summer Series in Chicago, continuing our journey of mindful community building.",
+    Our_Mission_Text: "To provide accessible, high-quality mindfulness and movement experiences that foster inner peace and community connection.",
+    Our_Values_Text: "We value authenticity, compassion, inclusivity, and a deep respect for the natural world in all that we do.",
+    Our_Approach_Text: "We blend ancient wisdom with modern science, creating unique events that are both grounding and uplifting."
+  }
+};
+
 export const fallbackHomepageContent = {
   fields: {
     heroHeadline: "Find Your Flow with Serenity Tides",
