@@ -75,77 +75,77 @@ export const fallbackEvents = [
 export const fallbackTeamMembers = [
   {
     fields: {
-      name: "Erik Beitel",
-      role: "Founder & Lead Instructor",
-      bio: "Erik founded Serenity Tides with a vision of bringing mindful practices to urban communities. With over 10 years of experience in yoga and meditation, he creates welcoming spaces for all practitioners.",
-      avatar: {
+      Name: "Erik Beitel",
+      Role: "Founder & Lead Instructor",
+      Bio: "Erik founded Serenity Tides with a vision of bringing mindful practices to urban communities. With over 10 years of experience in yoga and meditation, he creates welcoming spaces for all practitioners.",
+      Avatar: {
         fields: {
           file: {
             url: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face"
           }
         }
       },
-      order: 1
+      Order: 1
     }
   },
   {
     fields: {
-      name: "Julia Fetty",
-      role: "Yoga & Movement Specialist",
-      bio: "Julia brings a dynamic approach to movement, blending traditional yoga with modern fitness techniques. Her classes are known for their inclusive atmosphere and creative sequences.",
-      avatar: {
+      Name: "Julia Fetty",
+      Role: "Yoga & Movement Specialist",
+      Bio: "Julia brings a dynamic approach to movement, blending traditional yoga with modern fitness techniques. Her classes are known for their inclusive atmosphere and creative sequences.",
+      Avatar: {
         fields: {
           file: {
             url: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face"
           }
         }
       },
-      order: 2
+      Order: 2
     }
   },
   {
     fields: {
-      name: "Amanda LeVine",
-      role: "Community Manager",
-      bio: "Amanda ensures our community feels connected and supported. She coordinates events, manages communications, and helps create the warm, welcoming environment Serenity Tides is known for.",
-      avatar: {
+      Name: "Amanda LeVine",
+      Role: "Community Manager",
+      Bio: "Amanda ensures our community feels connected and supported. She coordinates events, manages communications, and helps create the warm, welcoming environment Serenity Tides is known for.",
+      Avatar: {
         fields: {
           file: {
             url: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face"
           }
         }
       },
-      order: 3
+      Order: 3
     }
   },
   {
     fields: {
-      name: "Isabel Fudali",
-      role: "Mindfulness Coach",
-      bio: "Isabel specializes in meditation and mindfulness practices. Her gentle guidance helps participants develop sustainable daily practices for stress reduction and mental clarity.",
-      avatar: {
+      Name: "Isabel Fudali",
+      Role: "Mindfulness Coach",
+      Bio: "Isabel specializes in meditation and mindfulness practices. Her gentle guidance helps participants develop sustainable daily practices for stress reduction and mental clarity.",
+      Avatar: {
         fields: {
           file: {
             url: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&h=100&fit=crop&crop=face"
           }
         }
       },
-      order: 4
+      Order: 4
     }
   },
   {
     fields: {
-      name: "Drew Schwartz",
-      role: "Creative Director",
-      bio: "Drew brings artistic vision to our events and communications. He ensures that every aspect of the Serenity Tides experience reflects our values of beauty, authenticity, and connection.",
-      avatar: {
+      Name: "Drew Schwartz",
+      Role: "Creative Director",
+      Bio: "Drew brings artistic vision to our events and communications. He ensures that every aspect of the Serenity Tides experience reflects our values of beauty, authenticity, and connection.",
+      Avatar: {
         fields: {
           file: {
             url: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face"
           }
         }
       },
-      order: 5
+      Order: 5
     }
   }
 ];
