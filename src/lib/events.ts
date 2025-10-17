@@ -1,0 +1,38 @@
+export const events = [
+  {
+    title: "2025 Summer Series - Week 1: Mindful Mornings",
+    date: "Saturday, June 14, 2025",
+    time: "8:00 AM - 10:00 AM",
+    location: "Lincoln Park, Chicago",
+    description: "Join us for the opening session of our 2025 Summer Series! Start your weekend with gentle yoga flows and guided meditation in the heart of Chicago.",
+    image: "https://placehold.co/600x400.png",
+    hint: "yoga in chicago park morning",
+  },
+  {
+    title: "2025 Summer Series - Week 2: Sunset Serenity",
+    date: "Saturday, June 21, 2025",
+    time: "6:00 PM - 8:00 PM",
+    location: "Millennium Park, Chicago",
+    description: "Experience the magic of sunset meditation and restorative yoga practices as we continue our summer journey together.",
+    image: "https://placehold.co/600x400.png",
+    hint: "sunset meditation chicago skyline",
+  },
+  {
+    title: "2025 Summer Series - Week 3: Community Connection",
+    date: "Saturday, June 28, 2025",
+    time: "10:00 AM - 12:00 PM",
+    location: "Grant Park, Chicago",
+    description: "Build deeper connections with fellow practitioners through partner yoga, group meditation, and mindful movement exercises.",
+    image: "https://placehold.co/600x400.png",
+    hint: "group yoga chicago park community",
+  },
+  {
+    title: "2025 Summer Series - Week 4: Nature's Embrace",
+    date: "Saturday, July 5, 2025",
+    time: "9:00 AM - 11:00 AM",
+    location: "North Avenue Beach, Chicago",
+    description: "Connect with the natural elements as we practice by Lake Michigan, incorporating the sounds and energy of water into our session.",
+    image: "https://placehold.co/600x400.png",
+    hint: "beach yoga lake michigan chicago",
+  },
+];
