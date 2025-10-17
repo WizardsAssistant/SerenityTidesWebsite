@@ -36,9 +36,9 @@ describe('Contentful Integration', () => {
       // Check structure of first team member (Contentful structure with fields)
       const firstMember = fallbackTeamMembers[0]
       expect(firstMember).toHaveProperty('fields')
-      expect(firstMember.fields).toHaveProperty('name')
-      expect(firstMember.fields).toHaveProperty('role')
-      expect(firstMember.fields).toHaveProperty('bio')
+      expect(firstMember.fields).toHaveProperty('Name')
+      expect(firstMember.fields).toHaveProperty('Role')
+      expect(firstMember.fields).toHaveProperty('Bio')
     })
 
     it('provides fallback page content', () => {
@@ -89,12 +89,12 @@ describe('Contentful Integration', () => {
     it('ensures all team members have required fields', () => {
       fallbackTeamMembers.forEach((member, index) => {
         expect(member.fields).toBeDefined()
-        expect(member.fields.name).toBeDefined()
-        expect(member.fields.role).toBeDefined()
-        expect(member.fields.bio).toBeDefined()
+        expect(member.fields.Name).toBeDefined()
+        expect(member.fields.Role).toBeDefined()
+        expect(member.fields.Bio).toBeDefined()
         
         // Validate name is not empty
-        expect(member.fields.name.trim().length).toBeGreaterThan(0)
+        expect(member.fields.Name.trim().length).toBeGreaterThan(0)
       })
     })
   })
