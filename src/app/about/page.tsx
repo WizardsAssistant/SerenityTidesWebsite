@@ -24,7 +24,7 @@ export default async function AboutPage() {
 
       <section className="mb-16">
         <Image 
-          src={aboutContent?.fields.Hero_Image?.fields.file.url || "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&h=500&fit=crop&crop=center"}
+          src={aboutContent?.fields.Hero_Image?.fields.file.url ? `https:${aboutContent.fields.Hero_Image.fields.file.url}` : "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&h=500&fit=crop&crop=center"}
           alt={aboutContent?.fields.Hero_Image_Alt_Text || "Serene landscape"}
           width={1200}
           height={500}
@@ -71,7 +71,7 @@ export default async function AboutPage() {
             <Card key={member.fields.Name} className="text-center shadow-md">
               <CardHeader className="items-center">
                 <Avatar className="w-24 h-24 mb-4">
-                  <AvatarImage src={member.fields.Avatar.fields.file.url} alt={member.fields.Name} />
+                  <AvatarImage src={`https:${member.fields.Avatar.fields.file.url}`} alt={member.fields.Name} />
                   <AvatarFallback>{member.fields.Name.charAt(0)}</AvatarFallback>
                 </Avatar>
                 <CardTitle className="font-headline">{member.fields.Name}</CardTitle>
