@@ -24,8 +24,8 @@ export default async function AboutPage() {
 
       <section className="mb-16">
         <Image 
-          src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&h=500&fit=crop&crop=center"
-          alt="Serene landscape"
+          src={aboutContent?.fields.Hero_Image?.fields.file.url || "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&h=500&fit=crop&crop=center"}
+          alt={aboutContent?.fields.Hero_Image_Alt_Text || "Serene landscape"}
           width={1200}
           height={500}
           className="rounded-lg object-cover w-full shadow-lg"
@@ -68,18 +68,18 @@ export default async function AboutPage() {
         </h2>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {teamMembers.map((member) => (
-            <Card key={member.fields.name} className="text-center shadow-md">
+            <Card key={member.fields.Name} className="text-center shadow-md">
               <CardHeader className="items-center">
                 <Avatar className="w-24 h-24 mb-4">
-                  <AvatarImage src={member.fields.avatar.fields.file.url} alt={member.fields.name} />
-                  <AvatarFallback>{member.fields.name.charAt(0)}</AvatarFallback>
+                  <AvatarImage src={member.fields.Avatar.fields.file.url} alt={member.fields.Name} />
+                  <AvatarFallback>{member.fields.Name.charAt(0)}</AvatarFallback>
                 </Avatar>
-                <CardTitle className="font-headline">{member.fields.name}</CardTitle>
+                <CardTitle className="font-headline">{member.fields.Name}</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground mb-2">{member.fields.role}</p>
-                {member.fields.bio && (
-                  <p className="text-sm text-muted-foreground">{member.fields.bio}</p>
+                <p className="text-muted-foreground mb-2">{member.fields.Role}</p>
+                {member.fields.Bio && (
+                  <p className="text-sm text-muted-foreground">{member.fields.Bio}</p>
                 )}
               </CardContent>
             </Card>

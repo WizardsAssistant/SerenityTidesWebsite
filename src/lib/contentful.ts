@@ -49,6 +49,22 @@ export interface AboutPageContentEntry {
     Our_Mission_Text: string;
     Our_Values_Text: string;
     Our_Approach_Text: string;
+    Hero_Image?: {
+      fields: {
+        file: {
+          url: string;
+          details: {
+            image: {
+              width: number;
+              height: number;
+            };
+          };
+        };
+        title: string;
+        description: string;
+      };
+    };
+    Hero_Image_Alt_Text?: string;
   };
 }
 
@@ -80,17 +96,19 @@ export interface HomepageContentEntry {
 
 export interface TeamMemberEntry {
   fields: {
-    name: string;
-    role: string;
-    bio: string;
-    avatar: {
+    Name: string;
+    Role: string;
+    Bio: string;
+    Avatar: {
       fields: {
         file: {
           url: string;
         };
+        title: string;
+        description: string;
       };
     };
-    order: number;
+    Order: number;
   };
 }
 
@@ -125,9 +143,27 @@ export async function getEvents(): Promise<EventEntry[]> {
 }
 
 export async function getTeamMembers(): Promise<TeamMemberEntry[]> {
-  // Content type 'teamMember' doesn't exist in Contentful space - using fallback data
-  console.log('Using fallback team data - teamMember content type not configured in Contentful');
-  return fallbackTeamMembers;
+  if (!client) {
+    console.log('Using fallback team data - Contentful not configured');
+    return fallbackTeamMembers;
+  }
+
+  try {
+    const response = await client.getEntries({
+      content_type: 'teamMember',
+      order: 'fields.Order',
+    });
+
+    if (response.items && response.items.length > 0) {
+      return response.items as TeamMemberEntry[];
+    }
+
+    console.log('No team members found in Contentful - using fallback');
+    return fallbackTeamMembers;
+  } catch (error) {
+    console.error('Error fetching team members from Contentful:', error);
+    return fallbackTeamMembers;
+  }
 }
 
 export async function getPageContent(slug: string): Promise<PageContentEntry | null> {
