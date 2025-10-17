@@ -1,6 +1,6 @@
 # Editable Components Reference
 
-**Last Updated:** October 16, 2025  
+**Last Updated:** October 17, 2025  
 **Purpose:** Quick reference guide for all CMS-editable components on the Serenity Tides website
 
 ---
@@ -45,6 +45,7 @@ This document provides a complete list of all website content that can be edited
 |------------|--------------|-------------|------------------|
 | `About_Us_Text` | Long Text | Main about paragraph | Top section, first paragraph |
 | `About_Us_Secondary_Text` | Long Text | Secondary about paragraph | Top section, second paragraph |
+| `Hero_Image` | Media (Image) | Hero section background image | Top of About page, full-width |
 | `Our_Mission_Text` | Long Text | Mission statement | Three-column section, left column |
 | `Our_Values_Text` | Long Text | Values statement | Three-column section, center column |
 | `Our_Approach_Text` | Long Text | Approach description | Three-column section, right column |
@@ -121,16 +122,33 @@ interface HomepageContentEntry {
 
 **Content Type ID:** `aboutPageContent`  
 **Display Field:** `Title`  
-**Number of Fields:** 6
+**Number of Fields:** 7
 
 ```typescript
 interface AboutPageContentEntry {
   Title: string;
   About_Us_Text: string;
   About_Us_Secondary_Text: string;
+  Hero_Image: Asset;
   Our_Mission_Text: string;
   Our_Values_Text: string;
   Our_Approach_Text: string;
+}
+```
+
+### Team Member Content Type
+
+**Content Type ID:** `teamMember`  
+**Display Field:** `Name`  
+**Number of Fields:** 5
+
+```typescript
+interface TeamMemberEntry {
+  Name: string;
+  Role: string;
+  Bio: string;
+  Avatar: Asset;
+  Order: number;
 }
 ```
 
@@ -237,7 +255,8 @@ Edit in Contentful → Publish → Webhook (if configured) → Netlify Build →
 ### Planned CMS Integrations
 - [ ] Events page content
 - [ ] Live Location page content
-- [ ] Team member bios
+- [x] Team member bios ✅
+- [x] About page hero image ✅
 - [ ] Navigation menu items
 - [ ] Footer content
 - [ ] Global settings (site title, meta tags)
@@ -262,6 +281,12 @@ Edit in Contentful → Publish → Webhook (if configured) → Netlify Build →
 ---
 
 ## Changelog
+
+### October 17, 2025
+- ✅ Added Team Member content type (5 fields: Name, Role, Bio, Avatar, Order)
+- ✅ Added Hero_Image field to About Page Content
+- ✅ Deployed and verified in production
+- ✅ All images loading from Contentful CDN
 
 ### October 16, 2025
 - ✅ Added About Page Content (5 fields)
