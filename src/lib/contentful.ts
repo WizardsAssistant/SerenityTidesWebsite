@@ -152,6 +152,7 @@ export async function getTeamMembers(): Promise<TeamMemberEntry[]> {
     const response = await client.getEntries({
       content_type: 'teamMember',
       order: 'fields.Order',
+      include: 2, // Include linked assets (images)
     });
 
     if (response.items && response.items.length > 0) {
@@ -206,6 +207,7 @@ export async function getAboutPageContent(): Promise<AboutPageContentEntry | nul
     const response = await client.getEntries({
       content_type: 'aboutPageContent',
       limit: 1,
+      include: 2, // Include linked assets (images)
     });
     
     if (response.items.length > 0) {
