@@ -1,0 +1,18 @@
+# Ignore test outputs and temporary files
+*.log
+*.tmp
+test-*
+temp-*
+
+# Ignore downloaded/generated assets during script runs
+downloads/
+uploads/
+temp-images/
+
+# Ignore any accidentally created env files
+.env*
+!.env.example
+
+# Ignore node_modules if scripts ever need dependencies
+node_modules/
+
