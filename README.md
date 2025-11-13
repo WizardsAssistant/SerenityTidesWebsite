@@ -37,6 +37,32 @@ npm run dev
 
 Visit [http://localhost:9002](http://localhost:9002) to see the website.
 
+### Getting Contentful Access
+
+This project uses Contentful CMS for content management. To develop locally, you'll need access to the Contentful space.
+
+**For External Contributors:**
+
+1. **Request Access**: Contact the repository maintainer to be invited to the Contentful space
+2. **Accept Invitation**: Check your email for the Contentful invitation and create/log in to your account
+3. **Find Your Credentials**:
+   - Log in to [Contentful](https://app.contentful.com)
+   - Select the "Serenity Tides Website" space
+   - Navigate to **Settings → API keys**
+   - Find or create a "Content Delivery API" key
+   - Copy the **Space ID** and **Content Delivery API - access token**
+4. **Configure Locally**:
+   ```bash
+   cp .env.example .env.local
+   # Edit .env.local and replace placeholders with your actual credentials:
+   # - CONTENTFUL_SPACE_ID (from Settings → General Settings)
+   # - CONTENTFUL_ACCESS_TOKEN (from Settings → API keys)
+   ```
+
+**Important:** Never commit `.env.local` to version control. It's already in `.gitignore`.
+
+**Need Help?** Open an issue or contact the maintainers.
+
 ## 🛠️ Tech Stack
 
 - **Framework**: [Next.js 15.3.3](https://nextjs.org/) with App Router
